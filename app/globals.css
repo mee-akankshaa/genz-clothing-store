@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+:root.dark { color-scheme: dark; }
+
+@layer base {
+  body { @apply bg-paper text-ink antialiased; }
+  .dark body { @apply bg-ink text-paper; }
+  :focus-visible { outline: 3px solid #7c3aed; outline-offset: 3px; }
+  .dark :focus-visible { outline-color: #c6ff00; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-current bg-volt px-5 py-3 font-display text-lg uppercase tracking-wide text-ink shadow-pop transition active:translate-x-1 active:translate-y-1 active:shadow-none disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-ghost { @apply btn bg-transparent text-inherit; }
+  .sticker {
+    @apply inline-block -rotate-3 border-2 border-ink bg-hot px-2 py-0.5 font-display text-sm uppercase tracking-wider text-ink;
+  }
+  .chip {
+    @apply inline-flex min-h-[44px] min-w-[44px] items-center justify-center border-2 border-current px-3 text-sm font-bold uppercase;
+  }
+  .chip[aria-pressed="true"], .chip[aria-checked="true"] { @apply bg-ink text-volt; }
+  .dark .chip[aria-pressed="true"], .dark .chip[aria-checked="true"] { @apply bg-volt text-ink; }
+  .field {
+    @apply w-full border-2 border-current bg-transparent px-3 py-3 text-base;
+  }
+  .h-big { @apply font-display text-5xl uppercase leading-[0.9] sm:text-7xl; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee { animation: none; }
+}
